@@ -1,0 +1,10 @@
+gesture_name,gesture_type,number_of_gestures, idx
+thumb_up,static,26, 0
+one_finger,static,47, 1
+two_fingers,static,33, 2
+one_finger_circle,dynamic,0,3
+one_finger_down,dynamic,0,4
+one_finger_left,dynamic,0,5
+none,dynamic,0,6
+none,static,0,7
+example_gesture,dynamic,0,8

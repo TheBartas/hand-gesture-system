@@ -1,0 +1,47 @@
+[
+    {   
+        "name": "thumb_up",
+        "type": "static",
+        "volumen": 0
+    },
+    {
+        "name": "one_finger",
+        "type": "static",
+        "volumen": 0
+    },
+    {
+        "name": "two_fingers",
+        "type": "static",
+        "volumen": 0
+    },
+    {
+        "name": "ok",
+        "type": "static",
+        "volumen": 0
+    },
+    {
+        "name": "none",
+        "type": "static",
+        "volumen": 0
+    },
+    {
+        "name": "one_finger_circle",
+        "type": "dynamic",
+        "volumen": 0
+    },
+    {
+        "name": "one_finger_down",
+        "type": "dynamic",
+        "volumen": 0
+    },
+    {
+        "name": "one_finger_left",
+        "type": "dynamic",
+        "volumen": 0
+    },
+    {
+        "name": "none",
+        "type": "dynamic",
+        "volumen": 0
+    }
+]

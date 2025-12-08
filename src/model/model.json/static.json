@@ -1,0 +1,22 @@
+{
+    "class": "static",
+    "data": {
+        "camera": 0,
+        "model_complexity": 1,
+        "max_num_hands": 1,
+        "min_detection_confidence": 0.7,
+        "min_tracking_confidence": 0.9,
+        "static_image_mode": false,
+        "test_size": 0.2,
+        "random_state": 42,
+        "optimizer": "adam",
+        "loss": "sparse_categorical_crossentropy",
+        "metrics": [
+            "accuracy"
+        ],
+        "epochs": 30,
+        "batch_size": 50,
+        "instance_name": "static",
+        "model_file_name": "static_model"
+    }
+}
