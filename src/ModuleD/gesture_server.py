@@ -104,7 +104,6 @@ class GestureServer:
                 image = cv2.cvtColor(image, cv2.COLOR_RGB2BGR)
 
                 if result.multi_hand_landmarks:
-                    frame_counter+=1
                     for hand_landmarks in result.multi_hand_landmarks:
                         mp.solutions.drawing_utils.draw_landmarks(
                             image,
@@ -113,19 +112,27 @@ class GestureServer:
                             mp.solutions.drawing_styles.get_default_hand_landmarks_style(),
                             mp.solutions.drawing_styles.get_default_hand_connections_style(),
                         )
+                        frame_counter+=1
                         
                         seq.append(self._dynamicDetector.extract_points(hand_landmarks))
                         
                         if frame_counter == self._TARGET_FRAMES:
-                            predicted_class = self._dynamicDetector.detect(self._dynamicDetector.normalize(seq))
+                            pred_dyn = self._dynamicDetector.detect(self._dynamicDetector.normalize(seq))
                             frame_counter = 0
                             seq.clear()
-                            self._gesture = self._dynamicDetector.prediction(predicted_class)
-
+                            if pred_dyn > 0:
+                                self._gesture = self._dynamicDetector.prediction(pred_dyn)
+                                self._type = 'dynamic'
+                            else:
+                                self._gesture = 'None'
+                                self._type = 'dynamic'
                         else:
                             predicted_class = self._staticDetector.detect(self._staticDetector.normalize(hand_landmarks))
                             self._gesture = self._staticDetector.prediction(predicted_class)
+                            self._type = 'static'
                 else:
+                    frame_counter = 0
+                    seq.clear()
                     self._gesture = 'None'
                     self._type = 'static'
 
@@ -251,6 +258,7 @@ if __name__ == "__main__":
         min_tracking_confidence = MIN_TRACKING_CONFIDENCE,
         target_frames=TARGET_FRAMES,
         mode='active',
+
     )
     try:
         asyncio.run(gesture_server.run())

@@ -31,11 +31,8 @@ class WebsocketClient:
                             cnt=0
                         elif prev == gesture:
                             cnt+=1
-                        
-                        if cnt != 10:
-                            continue
-                        print(gesture)
-                        await self._handler.handle(gesture)
+                        if cnt == 15:
+                            await self._handler.handle(gesture)
                         continue
                     if type == "dynamic":
                         await self._handler.handle(gesture)
